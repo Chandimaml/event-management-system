@@ -6,7 +6,7 @@ import UserFooter from '../components/User/UserFooter'; // පරීක්ෂා
 const ContactUs = () => {
   // Logout Function
   const handleLogout = () => {
-    if (window.confirm("ඔබට Logout වීමට අවශ්‍යද?")) {
+    if (window.confirm("Do you want to Logout??")) {
       localStorage.removeItem('userToken');
       localStorage.removeItem('userInfo');
       window.location.href = '/login';
@@ -72,7 +72,7 @@ const ContactUs = () => {
           </div>
         </div>
 
-        {/* ඔයා එවපු අලුත් Footer එක */}
+        
         {/* <UserFooter /> */}
       </main>
     </div>

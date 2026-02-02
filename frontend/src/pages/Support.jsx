@@ -1,12 +1,12 @@
 import React from 'react';
 import { Home, LayoutGrid, LifeBuoy, Info, Phone, LogOut, HelpCircle, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import UserFooter from '../components/User/UserFooter'; // ඔබේ folder path එක පරීක්ෂා කරන්න
+import UserFooter from '../components/User/UserFooter'; //  folder path එක පරීක්ෂා කරන්න
 
 const Support = () => {
   // Logout Function
   const handleLogout = () => {
-    if (window.confirm("ඔබට Logout වීමට අවශ්‍යද?")) {
+    if (window.confirm("Do you want to Logout?")) {
       localStorage.removeItem('userToken');
       localStorage.removeItem('userInfo');
       window.location.href = '/login';
@@ -66,9 +66,9 @@ const Support = () => {
         <div className="p-10 flex-grow">
           <header className="mb-12">
             <h1 className="text-5xl font-black italic uppercase">
-              Support / <span className="text-lime-400">උදව්</span>
+              Support / <span className="text-lime-400">HELP</span>
             </h1>
-            <p className="text-gray-500 font-medium mt-2 italic">ඔබට අවශ්‍ය ඕනෑම සහායක් ලබා ගැනීමට පහත තොරතුරු පරීක්ෂා කරන්න.</p>
+            <p className="text-gray-500 font-medium mt-2 italic">Check the information below to get any assistance you need.</p>
           </header>
           
           <div className="space-y-6 max-w-4xl">
@@ -98,7 +98,7 @@ const Support = () => {
           <div className="mt-12 bg-lime-500/10 border border-lime-500/20 p-8 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-6 max-w-4xl">
             <div>
               <h2 className="text-2xl font-black italic uppercase mb-2">Still need help?</h2>
-              <p className="text-gray-400 font-medium">අපගේ පාරිභෝගික සේවා කණ්ඩායම හා සම්බන්ධ වන්න.</p>
+              <p className="text-gray-400 font-medium">Contact our customer service team.</p>
             </div>
             <Link to="/contactus">
               <button className="bg-lime-500 text-black px-8 py-4 rounded-2xl font-black uppercase flex items-center gap-2 hover:bg-lime-400 transition-all">
@@ -108,7 +108,7 @@ const Support = () => {
           </div>
         </div>
 
-        {/* ඔයාගේ අලුත් Footer එක */}
+        
         {/* <UserFooter /> */}
       </main>
     </div>

@@ -19,10 +19,10 @@ const Login = () => {
       localStorage.setItem('userInfo', JSON.stringify(res.data));
       localStorage.setItem('userToken', res.data.token);
       
-      alert('සාර්ථකව ලොග් වුණා!');
+      alert('Login Successfull!...');
       navigate('/home'); 
     } catch (err) {
-      alert(err.response?.data?.message || 'Login අසාර්ථකයි.');
+      alert(err.response?.data?.message || 'Login Failed!!!.');
     } finally {
       setLoading(false);
     }
@@ -44,7 +44,7 @@ const Login = () => {
              <Sparkles className="text-lime-400 w-8 h-8" />
           </div>
           <h2 className="text-4xl font-black text-white tracking-tight">User Login</h2>
-          <p className="text-gray-400 mt-2 font-medium">නැවතත් සාදරයෙන් පිළිගනිමු!</p>
+          <p className="text-gray-400 mt-2 font-medium">Welcome back!</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">

@@ -16,10 +16,10 @@ const Register = () => {
       // Backend එකේ authRoutes වල තියෙන register route එකට data යැවීම
       const res = await axios.post('http://localhost:5000/api/users/register', formData);
       
-      alert('ලියාපදිංචි වීම සාර්ථකයි! දැන් ලොග් වන්න.');
+      alert('Registration Successfull! please Login Now!!');
       navigate('/login'); // Register වුණාම Login පේජ් එකට යවනවා
     } catch (err) {
-      alert(err.response?.data?.message || 'ලියාපදිංචි වීම අසාර්ථකයි.');
+      alert(err.response?.data?.message || 'Failed Your Registration!!!.');
     } finally {
       setLoading(false);
     }
@@ -41,7 +41,7 @@ const Register = () => {
              <UserPlus className="text-lime-400 w-8 h-8" />
           </div>
           <h2 className="text-4xl font-black text-white tracking-tight">Create Account</h2>
-          <p className="text-gray-400 mt-2 font-medium">අදම අප හා එක්වන්න!</p>
+          <p className="text-gray-400 mt-2 font-medium">Join us today!</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

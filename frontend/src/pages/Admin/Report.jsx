@@ -27,7 +27,7 @@ const Report = () => {
 
     const generatePDF = () => {
         if (bookings.length === 0) {
-            alert("දත්ත සොයාගත නොහැක!");
+            alert("Data not found!");
             return;
         }
 

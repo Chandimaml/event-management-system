@@ -24,7 +24,7 @@ const EventList = () => {
   };
 
   const deleteEvent = async (id) => {
-    if (window.confirm('ඔබට විශ්වාසද මෙම Event එක අයින් කිරීමට අවශ්‍ය බව?')) {
+    if (window.confirm('Are you sure you want to delete this event?')) {
       try {
         const token = localStorage.getItem('adminToken');
         
@@ -37,10 +37,10 @@ const EventList = () => {
         
         // State එක අප්ඩේට් කර මකා දැමූ Event එක UI එකෙන් ඉවත් කිරීම
         setEvents(prevEvents => prevEvents.filter(event => event._id !== id));
-        alert('Event එක සාර්ථකව ඉවත් කළා!');
+        alert('Event removed successfully!');
       } catch (err) {
         console.error("Delete Error:", err.response?.data);
-        alert(err.response?.data?.message || 'ඉවත් කිරීමට නොහැකි වුණා. නැවත උත්සාහ කරන්න.');
+        alert(err.response?.data?.message || 'Unable to remove. Please try again.');
       }
     }
   };
@@ -58,7 +58,7 @@ const EventList = () => {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-white">Manage Events</h1>
-          <p className="text-gray-500 text-sm mt-1">සංස්කරණය කිරීම හෝ ඉවත් කිරීම මෙතැනින් කළ හැක.</p>
+          <p className="text-gray-500 text-sm mt-1">Editing or removal can be done here.</p>
         </div>
         <div className="bg-red-500/10 text-red-500 px-6 py-3 rounded-2xl border border-red-500/20 font-bold">
           Total: {events.length}

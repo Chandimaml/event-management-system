@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://localhost:5000/api', // ඔයාගේ Backend එක දුවන URL එක
+    baseURL: 'http://localhost:5000/api', // The URL where your backend runs
 });
 
-// හැම Request එකකටම Token එක යවන්න (පසුවට)
+// Send the Token for every request (later)
 API.interceptors.request.use((req) => {
     const token = localStorage.getItem('token');
     if (token) {

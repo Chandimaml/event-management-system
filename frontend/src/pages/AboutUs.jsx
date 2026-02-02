@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const AboutUs = () => {
   // --- Logout Function ---
   const handleLogout = () => {
-    if (window.confirm("ඔබට Logout වීමට අවශ්‍යද?")) {
+    if (window.confirm("Do you want to Logout???")) {
       localStorage.removeItem('userToken');
       localStorage.removeItem('userInfo');
       window.location.href = '/login';

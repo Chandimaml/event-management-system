@@ -28,7 +28,7 @@ const EditEvent = () => {
           image: null 
         });
       } catch (err) {
-        alert("දත්ත ලබා ගැනීමට නොහැකි වුණා.");
+        alert("Data not found!!!");
       }
     };
     fetchEvent();

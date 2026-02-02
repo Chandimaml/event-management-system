@@ -20,7 +20,7 @@ const UserDashboard = () => {
         });
         setBookings(res.data);
       } catch (err) {
-        console.error("Booking දත්ත ලබාගැනීම අසාර්ථකයි:", err);
+        console.error("Failed to retrieve booking data:", err);
       }
     };
     fetchMyBookings();
@@ -28,7 +28,7 @@ const UserDashboard = () => {
 
   // --- Logout Function ---
   const handleLogout = () => {
-    if (window.confirm("ඔබට Logout වීමට අවශ්‍යද?")) {
+    if (window.confirm("Do you want to Logout?")) {
       localStorage.removeItem('userToken');
       localStorage.removeItem('userInfo');
       window.location.href = '/login';
@@ -37,7 +37,7 @@ const UserDashboard = () => {
 
   // --- Delete Booking Function (Updated) ---
   const handleDeleteBooking = async (bookingId) => {
-    if (window.confirm("මෙම Booking එක මකා දැමීමට ඔබට සහතිකද?")) {
+    if (window.confirm("Are you sure you want to delete this booking?")) {
       try {
         const token = localStorage.getItem('userToken');
         // Backend Delete API Request
@@ -47,10 +47,10 @@ const UserDashboard = () => {
 
         // UI එක update කිරීම (මැකූ booking එක list එකෙන් අයින් කරයි)
         setBookings(bookings.filter(b => b._id !== bookingId));
-        alert("Booking එක සාර්ථකව මකා දැමුවා.");
+        alert("Booking deleted successfully!.");
       } catch (err) {
         console.error("Delete failed:", err);
-        alert(err.response?.data?.message || "මකා දැමීම අසාර්ථකයි.");
+        alert(err.response?.data?.message || "Delete Failed.");
       }
     }
   };
@@ -73,7 +73,7 @@ const UserDashboard = () => {
       link.parentNode.removeChild(link);
     } catch (err) {
       console.error("Download failed:", err);
-      alert("ටිකට් එක ඩවුන්ලෝඩ් කිරීමට නොහැක.");
+      alert("Unable to download ticket..");
     }
   };
 
@@ -110,7 +110,7 @@ const UserDashboard = () => {
           <header className="flex justify-between items-center mb-12">
             <div className="text-left">
               <h1 className="text-4xl font-black italic uppercase">WELCOME, {user?.name}!</h1>
-              <p className="text-gray-500 font-medium">මෙන්න ඔබේ ගෙවීම් සහ ටිකට්පත් විස්තර.</p>
+              <p className="text-gray-500 font-medium">Here are your payment and ticket details.</p>
             </div>
             <div className="relative p-3 bg-white/5 rounded-2xl border border-white/10 group cursor-pointer">
               <Bell className="text-lime-400 group-hover:scale-110 transition-transform" />
@@ -131,7 +131,7 @@ const UserDashboard = () => {
             
             <div className="bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden backdrop-blur-md">
               {bookings.length === 0 ? (
-                <div className="p-20 text-center text-gray-500 italic text-left">දැනට කිසිදු Booking එකක් කර නැත.</div>
+                <div className="p-20 text-center text-gray-500 italic text-left">No bookings have been made yet.</div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
