@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Background එක කළු පාටට පේන්න මේකත් දාමු */
+body {
+  background-color: #050505;
+  color: white;
+  margin: 0;
+}
