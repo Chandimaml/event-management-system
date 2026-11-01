@@ -2,14 +2,14 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// 1. User කෙනෙක්ව පද්ධතියට ලියාපදිංචි කිරීම (Register)
+// 1.  (Register)
 const registerUser = async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
 
         const userExists = await User.findOne({ email });
         if (userExists) {
-            return res.status(400).json({ message: 'මෙම ඊමේල් ලිපිනය දැනටමත් පාවිච්චි කර ඇත.' });
+            return res.status(400).json({ message: 'email or password already used' });
         }
 
         const user = await User.create({
@@ -52,7 +52,7 @@ const registerUser = async (req, res) => {
 //                 token: jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' })
 //             });
 //         } else {
-//             res.status(401).json({ message: 'ඊමේල් ලිපිනය හෝ මුරපදය වැරදියි!' });
+//             res.status(401).json({ message: 'email or password incorrect' });
 //         }
 //     } catch (error) {
 //         res.status(500).json({ message: error.message });
@@ -65,7 +65,7 @@ const loginUser = async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
 
-        // මෙන්න මෙතන matchPassword පාවිච්චි කරන්න
+        // use matchPassword 
         if (user && (await user.matchPassword(password))) {
             res.status(200).json({
                 message: "Login Successful!",
@@ -77,14 +77,14 @@ const loginUser = async (req, res) => {
                 token: jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' })
             });
         } else {
-            res.status(401).json({ message: 'ඊමේල් ලිපිනය හෝ මුරපදය වැරදියි!' });
+            res.status(401).json({ message: 'email or password incorrect!' });
         }
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-// 3. සියලුම Users ලාගේ ලැයිස්තුව ලබා ගැනීම (Admin සඳහා)
+// 3. take all user list (for Admin)
 const getUsers = async (req, res) => {
     try {
         const users = await User.find().select('-password'); 
@@ -94,7 +94,7 @@ const getUsers = async (req, res) => {
     }
 };
 
-// 4. User කෙනෙක්ව Delete කිරීම
+// 4. User  Delete 
 const deleteUser = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
@@ -109,7 +109,7 @@ const deleteUser = async (req, res) => {
     }
 };
 
-// CommonJS ක්‍රමයට Export කිරීම (මෙය වැදගත්!)
+// Exporting using the CommonJS method (This is important!)
 module.exports = {
     registerUser,
     loginUser,
